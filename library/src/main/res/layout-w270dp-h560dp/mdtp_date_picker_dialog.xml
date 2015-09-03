@@ -21,7 +21,7 @@
     android:gravity="center"
     android:orientation="vertical" >
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -35,7 +35,7 @@
 
             <include layout="@layout/mdtp_date_picker_view_animator" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <include layout="@layout/mdtp_done_button" />
 

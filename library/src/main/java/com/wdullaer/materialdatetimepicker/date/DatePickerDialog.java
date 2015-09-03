@@ -232,6 +232,7 @@ public class DatePickerDialog extends DialogFragment implements
         mDayOfWeekView = (TextView) view.findViewById(R.id.date_picker_header);
         mMonthAndDayView = (LinearLayout) view.findViewById(R.id.date_picker_month_and_day);
         mMonthAndDayView.setOnClickListener(this);
+
         mSelectedMonthTextView = (TextView) view.findViewById(R.id.date_picker_month);
         mSelectedDayTextView = (TextView) view.findViewById(R.id.date_picker_day);
         mYearView = (TextView) view.findViewById(R.id.date_picker_year);
@@ -240,11 +241,14 @@ public class DatePickerDialog extends DialogFragment implements
         int listPosition = -1;
         int listPositionOffset = 0;
         int currentView = MONTH_AND_DAY_VIEW;
+
         if (savedInstanceState != null) {
             mWeekStart = savedInstanceState.getInt(KEY_WEEK_START);
             mMinYear = savedInstanceState.getInt(KEY_YEAR_START);
             mMaxYear = savedInstanceState.getInt(KEY_YEAR_END);
+
             currentView = savedInstanceState.getInt(KEY_CURRENT_VIEW);
+
             listPosition = savedInstanceState.getInt(KEY_LIST_POSITION);
             listPositionOffset = savedInstanceState.getInt(KEY_LIST_POSITION_OFFSET);
             mMinDate = (Calendar)savedInstanceState.getSerializable(KEY_MIN_DATE);
@@ -370,8 +374,7 @@ public class DatePickerDialog extends DialogFragment implements
 
         switch (viewIndex) {
             case MONTH_AND_DAY_VIEW:
-                ObjectAnimator pulseAnimator = Utils.getPulseAnimator(mMonthAndDayView, 0.9f,
-                        1.05f);
+                ObjectAnimator pulseAnimator = Utils.getPulseAnimator(mMonthAndDayView, 0.9f, 1.05f);
                 if (mDelayAnimation) {
                     pulseAnimator.setStartDelay(ANIMATION_DELAY);
                     mDelayAnimation = false;
